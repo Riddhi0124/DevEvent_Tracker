@@ -27,10 +27,7 @@ const Navbar = () => {
         after:bg-cyan-400
         after:transition-all
         after:duration-300
-        hover:after:w-full
-      "
-    >
-      Home
+        hover:after:w-full">Home
     </Link>
   </li>
 
@@ -49,10 +46,7 @@ const Navbar = () => {
         after:bg-cyan-400
         after:transition-all
         after:duration-300
-        hover:after:w-full
-      "
-    >
-      Events
+        hover:after:w-full">Events
     </Link>
   </li>
 
@@ -71,9 +65,7 @@ const Navbar = () => {
         after:bg-cyan-400
         after:transition-all
         after:duration-300
-        hover:after:w-full
-      "
-    >
+        hover:after:w-full">
       Create Event
     </Link>
   </li>

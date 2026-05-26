@@ -18,9 +18,7 @@ const ExploreBtn = () => {
         transition-all duration-300
         hover:scale-105
         hover:bg-cyan-500/20
-        hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]
-      "
-    >
+        hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
       <span>Explore Events</span>
 
       <Image
