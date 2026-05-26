@@ -31,7 +31,7 @@ const Footer = () => {
               </li>
 
               <li>
-                <Link href="#events" className="hover:text-cyan-400 transition duration-300">
+                <Link href="/events" className="hover:text-cyan-400 transition duration-300">
                   Events
                 </Link>
               </li>
