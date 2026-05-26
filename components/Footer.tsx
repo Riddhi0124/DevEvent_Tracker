@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="mt-40 border-t border-cyan-500/10 pt-10 pb-6">
@@ -23,21 +25,21 @@ const Footer = () => {
 
             <ul className="space-y-3 text-gray-400 list-none">
               <li>
-                <a href="/" className="hover:text-cyan-400 transition duration-300">
+                <Link href="/" className="hover:text-cyan-400 transition duration-300">
                   Home
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#events" className="hover:text-cyan-400 transition duration-300">
+                <Link href="#events" className="hover:text-cyan-400 transition duration-300">
                   Events
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="/create-event" className="hover:text-cyan-400 transition duration-300">
+                <Link href="/create-event" className="hover:text-cyan-400 transition duration-300">
                   Create Event
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
