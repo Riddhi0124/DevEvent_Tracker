@@ -3,11 +3,29 @@ import EventCard from "@/components/EventCard";
 import { IEvent } from "@/database";
 import { cacheLife } from "next/cache";
 import { getAllEvents } from "@/lib/actions/event.actions";
+import SearchFilters from '@/components/SearchFilters';
 
-const Page = async () => {
+interface PageProps {
+  searchParams: Promise<{
+    query?: string;
+    mode?: string;
+    tag?: string;
+  }>;
+}
+
+const Page = async ({ searchParams }: PageProps) => {
   'use cache';
-  cacheLife('hours')
-  const { events } = await getAllEvents();
+  cacheLife('hours');
+  
+  // 1. Resolve search variables from the URL router interface
+  const resolvedParams = await searchParams;
+
+  // 2. Forward parameters safely directly to your server action query logic
+  const { events } = await getAllEvents({
+    query: resolvedParams.query,
+    mode: resolvedParams.mode,
+    tag: resolvedParams.tag,
+  });
 
   return (
     <section>
@@ -16,16 +34,32 @@ const Page = async () => {
 
       <ExploreBtn />
 
+      {/* 3. Insert the newly generated Search and Filter component bar */}
+      <div className="mt-10">
+        <SearchFilters />
+      </div>
+
       <div className="mt-20 space-y-7">
         <h3>Featured Events</h3>
 
-        <ul className="events">
-          {events && events.length > 0 && events.map((event: IEvent) => (
-            <li key={event._id as string} className="list-none">
-              <EventCard {...event} />
-            </li>
-          ))}
-        </ul>
+        {/* 4. Display list layout conditionally or deliver clean placeholder states */}
+        {events && events.length > 0 ? (
+          <ul className="events">
+            {events.map((event: IEvent) => (
+              <li key={event._id as string} className="list-none">
+                <EventCard {...event} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          /* Smooth Contextual Empty State displayed dynamically */
+          <div className="flex flex-col items-center justify-center text-center p-12 border border-dashed border-gray-300 rounded-2xl max-w-xl mx-auto bg-white/50">
+            <h4 className="text-lg font-semibold text-gray-800 mb-1">No events found</h4>
+            <p className="text-sm text-gray-500 max-w-xs">
+              We couldn't find any listings matching your search constraints. Try checking your spelling or adjusting filters.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   )
