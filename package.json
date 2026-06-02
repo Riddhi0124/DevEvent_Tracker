@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
     "@posthog/nextjs-config": "^1.7.6",
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.9.0",
@@ -22,7 +23,10 @@
     "posthog-node": "^5.21.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.4.0"
+    "react-hook-form": "^7.76.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
