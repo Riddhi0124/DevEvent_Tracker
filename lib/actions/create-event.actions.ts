@@ -4,7 +4,22 @@ import connectToDatabase from "@/lib/mongodb";
 import { Event } from "@/database";
 import { revalidatePath } from "next/cache";
 
-export async function createEvent(data: any) {
+type CreateEventInput = {
+  title: string;
+  shortDescription: string;
+  overview: string;
+  image: string;
+  date: string;
+  time: string;
+  location: string;
+  mode: string;
+  targetAudience: string;
+  agenda: string;
+  organizer: string;
+  tags: string;
+};
+
+export async function createEvent(data: CreateEventInput)  {
   try {
     await connectToDatabase();
 
@@ -46,8 +61,8 @@ export async function createEvent(data: any) {
     console.error("Create Event Error:", error);
 
     return {
-      success: false,
-      error: String(error),
-    };
+  success: false,
+  error: "Failed to create event",
+};
   }
 }

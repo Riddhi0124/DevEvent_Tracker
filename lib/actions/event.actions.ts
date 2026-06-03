@@ -38,9 +38,13 @@ export async function getAllEvents(filters?: { query?: string; mode?: string; ta
 
 export async function getSimilarEventsBySlug(
   slug: string,
-  tags: string[]
+  tags: string[] = []
 ) {
   await connectToDatabase();
+
+  if (!tags.length) {
+    return [];
+  }
 
   const events = await Event.find({
     slug: { $ne: slug },
